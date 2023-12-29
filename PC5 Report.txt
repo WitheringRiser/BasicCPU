@@ -1,0 +1,23 @@
+Divide work:
+My work centered around testing the project. I also drew the first schematic of the wiring in my team and verified the files were correct when submitting. For the testing, I created the waveform analysis tool to find where the issues were with the wiring for the project by checking the registers and imem/dmem instructions. Once issues were fixed, I confirmed everything worked before submitting.
+
+Branch:
+Use ALU output for the isNotEqual and send that output to an AND gate where the other input is the bne opcode. If the AND gate is 1, then PC next would be PC + 1 + immediate.
+
+Slowest: 
+LW is the slowest as it has the most steps to go through. LW must pass through the regfile, ALU, dmem, and several muxes.
+
+Speed:
+The maximum clock speed in 250MHz which corresponds to 0.25 cycles per ns.
+
+Why clocking scheme:
+The imem instructions have the opposite clock compared to the rest. This way the next instruction can be read while the other processes run such as processor, regfile, and dmem.
+
+PC modules:
+We split the modules into similar groups such as ones that do PC+1, PC+1+N, PC=rd, etc.
+
+Initial design:
+I created an intitial visual diagram by hand with all wire names and mux names used in verilog. PC5 built heavily on PC4 so drawing out the modules was unecessary and drawing by hand based off PC4 made more sense.
+
+Bug:
+We had trouble getting the waveform to work a second time. The first day I worked on the waveform I got it to work and show the registers and the imem/dmem components. However when I returned to work on it, the waveform did not work again. I first reached out on Ed Discussion and got a hint from Shiyu. There was very little I had changed between those days so I isolated the problem down to exchanging files with my partner. Once I recreated the imem file rather than using my teammates imem file from google drive did the issue resolve itself and the waveform provide the right output.
